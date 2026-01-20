@@ -1,5 +1,6 @@
 #include "VideoRenderer.h"
 #include <QDebug>
+#include <cstring>
 
 VideoRenderer::VideoRenderer(QWidget *parent)
     : QOpenGLWidget(parent)

@@ -8,6 +8,7 @@
 #include <QOpenGLBuffer>
 #include <QMatrix4x4>
 #include <QMutex>
+#include <vector>
 
 class VideoRenderer : public QOpenGLWidget, protected QOpenGLFunctions {
     Q_OBJECT
