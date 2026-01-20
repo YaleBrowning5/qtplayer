@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 #include <QApplication>
+#include <QPalette>
+#include <QColor>
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);

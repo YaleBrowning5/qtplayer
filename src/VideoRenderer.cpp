@@ -43,7 +43,13 @@ void VideoRenderer::updateFrame(const uint8_t *data, int width, int height) {
     videoWidth = width;
     videoHeight = height;
     
-    size_t dataSize = width * height * 4; // RGBA
+    // Check for potential overflow before allocation
+    if (width <= 0 || height <= 0 || width > 16384 || height > 16384) {
+        qWarning() << "Invalid video dimensions:" << width << "x" << height;
+        return;
+    }
+    
+    size_t dataSize = static_cast<size_t>(width) * static_cast<size_t>(height) * 4; // RGBA
     frameData.resize(dataSize);
     memcpy(frameData.data(), data, dataSize);
     
