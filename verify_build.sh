@@ -178,7 +178,10 @@ if [ "$all_files_present" = true ]; then
         echo "Attempting build..."
         echo "-----------------------------------"
         
-        if make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 1) >/dev/null 2>&1; then
+        # Determine number of CPU cores
+        NUM_CORES=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 1)
+        
+        if make -j${NUM_CORES} >/dev/null 2>&1; then
             print_status 0 "Build successful"
             echo ""
             echo -e "${GREEN}✓ QtPlayer built successfully!${NC}"
